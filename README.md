@@ -52,9 +52,19 @@ That's it! You're ready to play.
 
 ---
 
-<p align="center">
-  Developed by 
-  <a href="https://github.com/dhairyajangir" target="_blank">Dhairya</a>, 
-  <a href="https://github.com/Avishkar-s73" target="_blank">Avishkar</a>, and 
-  <a href="https://github.com/legit92" target="_blank">Nitin</a>
-</p>
+<p align="center"><strong>Developed by</strong></p>
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/dhairyajangir" target="_blank">Dhairya</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Avishkar-s73" target="_blank">Avishkar</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/legit92" target="_blank">Nitin</a>
+    </td>
+  </tr>
+</table>
+
