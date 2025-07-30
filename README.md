@@ -1,106 +1,60 @@
-# Territory Wars - CSS Style Guide
+# Territory Wars
 
-This document provides an overview of the `style.css` file for the Territory Wars game. This file is built as a flexible and reusable design system using modern CSS features. It includes a comprehensive set of CSS variables for theming, base styles for common HTML elements, a collection of UI components, and specific styles for the game's interface.
+A turn-based strategy game for two players built with HTML, CSS, and JavaScript. Players compete to either get four pieces in a row or to control the most territory on an 8x8 grid by the time the board is full.
+
+## How to Play
+
+The game is simple to learn but offers strategic depth.
+
+1.  **Objective:** There are two ways to win:
+    * **Four-in-a-Row:** Be the first player to align four of your pieces horizontally, vertically, or diagonally.
+    * **Territory Control:** If the entire board is filled without anyone achieving a four-in-a-row, the player with the largest connected territory wins. Territory is the total number of your pieces that are orthogonally adjacent (up, down, left, or right) to each other.
+
+2.  **Gameplay:**
+    * The game is played on an 8x8 grid.
+    * Player 1 (Blue) and Player 2 (Red) take turns placing one of their pieces on an empty cell.
+    * The game ends when a player wins or the board is full.
+
+3.  **Controls:**
+    * Click on any empty cell to place your piece.
+    * Use the "New Game" button to start a new match while keeping the session scores.
+    * Use the "Reset Scores" button to clear the scores for the current session.
 
 ## Features
 
-- **CSS Custom Properties**: A robust set of variables (`:root`) for colors, typography, spacing, and more, making customization and theme maintenance straightforward.
-- **Light & Dark Mode**: Supports both system-level `prefers-color-scheme` and manual toggling via a `data-color-scheme` attribute.
-- **Responsive Design**: Styles are fully responsive, adapting to various screen sizes from mobile to desktop using media queries.
-- **Component-Based**: Includes pre-styled, reusable components like Buttons, Cards, Forms, and Status Indicators.
-- **Utility Classes**: Provides a set of utility classes for quick styling of layout, spacing, and display properties (e.g., `.flex`, `.gap-16`, `.py-8`).
-- **Accessibility**: Incorporates accessibility best practices, including `:focus-visible` states, high-contrast support, and screen-reader-only classes.
+* **Dual-Win Condition:** Offers multiple strategies for victory.
+* **Responsive Design:** Playable on desktop and mobile devices.
+* **Interactive UI:** Clear indicators for the current player, turn number, and game status.
+* **Session Scoring:** Keeps track of wins and losses until the page is refreshed.
+* **Game Over Modal:** Clearly announces the winner and the reason for victory (four-in-a-row or territory control).
+* **Accessibility:** Keyboard navigation is supported for moving around the board and placing pieces.
 
-## File Structure
+## Getting Started
 
-The `style.css` file is organized logically:
+To run the game on your local machine, follow these simple steps:
 
-1.  **`:root` Variables**:
-    -   **Primitive Tokens**: Base values for colors, fonts, spacing, etc.
-    -   **Semantic Tokens**: Contextual variables (e.g., `--color-background`, `--color-primary`) that map to primitive tokens. This is where you'd make most theme changes.
-    -   **Light & Dark Mode Definitions**: Overrides for semantic tokens within a `@media (prefers-color-scheme: dark)` block and `[data-color-scheme]` attribute selectors.
-2.  **Base Styles**: Global styles and resets for `html`, `body`, typography (`h1`-`h6`, `p`, `a`), and other core elements.
-3.  **Component Styles**: CSS for reusable UI components like `.btn`, `.card`, `.form-control`, and `.status`.
-4.  **Layout & Utilities**: The `.container` class and various utility classes for flexbox, spacing, etc.
-5.  **Game-Specific Styles**: Styles unique to the Territory Wars UI, such as the game board, player indicators, and modals.
+1.  **Clone the repository or download the files:**
+    ```bash
+    git clone https://github.com/Avishkar-s73/Territory-Wars.git
+    ```
+    Or simply download `index.html`, `style.css`, and `app.js` into the same folder.
 
-## How to Use
+2.  **Open the game:**
+    Navigate to the project directory and open the `index.html` file in your favorite web browser.
 
-### Linking the Stylesheet
+That's it! You're ready to play.
 
-Include the stylesheet in the `<head>` of your HTML document.
+## Technologies Used
 
-```html
-<link rel="stylesheet" href="style.css">
-```
+* **HTML5:** For the basic structure and content of the game.
+* **CSS3:** For styling, layout, and responsive design, including a clean light/dark mode theme.
+* **JavaScript (ES6+):** For all the game logic, state management, and DOM manipulation.
 
-### Using Components
+---
 
-Components are used by adding their respective classes to your HTML elements.
-
-**Buttons:**
-
-```html
-<!-- Primary Button -->
-<button class="btn btn--primary">Click Me</button>
-
-<!-- Secondary Button -->
-<button class="btn btn--secondary">More Info</button>
-
-<!-- Outline Button -->
-<button class="btn btn--outline">Cancel</button>
-
-<!-- Small, Full-Width Button -->
-<button class="btn btn--primary btn--sm btn--full-width">Submit</button>
-```
-
-**Cards:**
-
-```html
-<div class="card">
-  <div class="card__header">
-    <h5>Card Title</h5>
-  </div>
-  <div class="card__body">
-    <p>This is the content of the card. It uses semantic color tokens for its background and border.</p>
-  </div>
-</div>
-```
-
-### Dark Mode
-
-Dark mode is enabled automatically based on the user's system preference. To manually control the theme (e.g., for a user-facing theme switcher), add a `data-color-scheme` attribute to your `<html>` or `<body>` tag.
-
-```html
-<!-- Force Dark Mode -->
-<html data-color-scheme="dark">
-
-<!-- Force Light Mode -->
-<html data-color-scheme="light">
-</html>
-```
-
-### Customization
-
-The easiest way to customize the look and feel of the application is by modifying the **semantic color tokens** in the `:root` block of `style.css`.
-
-For example, to change the primary color for the light theme, you would only need to change this one line:
-
-```css
-/* in :root */
---color-primary: var(--color-orange-500); /* Was --color-teal-500 */
-```
-
-All components that use `--color-primary` (like primary buttons) will automatically update.
-
-### Game-Specific Styles
-
-The section starting with `/* Game-specific styles for Territory Wars */` contains all styles related to the game itself.
-
-- **`.game-board`**: The main grid for the game.
-- **`.game-cell`**: Individual cells, with states like `.player1`, `.player2`, and `.winning-cell`.
-- **`.game-status`**: The top bar showing the current player and turn.
-- **`.score-section`**: The area displaying player scores.
-- **`.modal`**: The popup that appears at the end of the game.
-
-These classes are designed to be manipulated by JavaScript to reflect the current state of the game.
+<p align="center">
+  Developed by 
+  <a href="https://github.com/dhairyajangir" target="_blank">Dhairya</a>, 
+  <a href="https://github.com/Avishkar-s73" target="_blank">Avishkar</a>, and 
+  <a href="https://github.com/legit92" target="_blank">Nitin</a>
+</p>
