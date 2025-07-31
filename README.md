@@ -35,7 +35,7 @@ To run the game on your local machine, follow these simple steps:
 
 1.  **Clone the repository or download the files:**
     ```bash
-    git clone https://github.com/Avishkar-s73/Territory-Wars.git
+    git clone https://github.com/dhairyajangir/Territory-Wars.git
     ```
     Or simply download `index.html`, `style.css`, and `app.js` into the same folder.
 
