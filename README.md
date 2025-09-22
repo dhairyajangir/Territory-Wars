@@ -84,13 +84,6 @@ You’re ready to play.
     <tr>
       <td align="center">
         <a href="https://github.com/dhairyajangir" target="_blank">Dhairya</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Avishkar-s73" target="_blank">Avishkar</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/legit92" target="_blank">Nitin</a>
-      </td>
     </tr>
   </table>
 </p>
