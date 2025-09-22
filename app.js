@@ -501,7 +501,47 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         // Recalculate board dimensions if needed
         updateUI();
+        adjustBoardForViewport();
     }, 250);
+});
+
+// Adjust board size based on viewport
+function adjustBoardForViewport() {
+    const gameBoard = document.getElementById('gameBoard');
+    const container = document.querySelector('.container');
+    
+    if (gameBoard && container) {
+        const containerWidth = container.clientWidth;
+        const availableWidth = containerWidth - 32; // Account for padding
+        
+        // Calculate optimal cell size for the viewport considering gaps
+        const gapSize = 3; // Default gap size
+        const padding = 20; // Board padding
+        const totalGapSpace = gapSize * 7; // 7 gaps between 8 cells
+        const maxCellSize = Math.floor((availableWidth - padding - totalGapSpace) / 8);
+        
+        if (maxCellSize >= 35 && maxCellSize <= 60) {
+            const cells = gameBoard.querySelectorAll('.game-cell');
+            cells.forEach(cell => {
+                cell.style.width = maxCellSize + 'px';
+                cell.style.height = maxCellSize + 'px';
+            });
+            
+            // Update the board's grid template to match
+            gameBoard.style.gridTemplateColumns = `repeat(8, ${maxCellSize}px)`;
+            gameBoard.style.gridTemplateRows = `repeat(8, ${maxCellSize}px)`;
+        }
+    }
+}
+
+// Initialize board size adjustment
+document.addEventListener('DOMContentLoaded', function() {
+    initializeDOM();
+    initializeGame();
+    setupEventListeners();
+    
+    // Adjust board size after a brief delay to ensure DOM is ready
+    setTimeout(adjustBoardForViewport, 100);
 });
 
 // Prevent context menu on touch devices for better UX
@@ -510,3 +550,31 @@ document.addEventListener('contextmenu', (e) => {
         e.preventDefault();
     }
 });
+
+// Add touch event optimizations
+document.addEventListener('touchstart', function(e) {
+    if (e.target.classList.contains('game-cell')) {
+        e.target.style.transition = 'transform 0.1s ease';
+    }
+}, { passive: true });
+
+document.addEventListener('touchend', function(e) {
+    if (e.target.classList.contains('game-cell')) {
+        setTimeout(() => {
+            e.target.style.transition = '';
+        }, 150);
+    }
+}, { passive: true });
+
+// Prevent zoom on double tap for game cells
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        if (event.target.classList.contains('game-cell') || 
+            event.target.closest('.game-board')) {
+            event.preventDefault();
+        }
+    }
+    lastTouchEnd = now;
+}, false);
